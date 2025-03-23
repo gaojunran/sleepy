@@ -71,6 +71,8 @@ curl --location --request POST '<VITE_SUPABASE_URL>/rest/v1/records' \
 
 其中尖括号内的内容需要您进行动态替换。`{battery}`和`{fg_app_name}`分别表示当前设备电量以及前台应用名称，可在MacroDroid中通过这样的大括号插值形式获取。
 
+注意，您需要给MacroDroid提供**无障碍权限和「无限制」的省电配置**，否则可能无法获取最及时的消息。
+
 <!-- #### **STEP 4** 在Netlify中部署本项目。
 
 TODO -->
