@@ -56,18 +56,20 @@ VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
 ```
 
-#### **STEP 3** 在Netlify中部署本项目。
+#### **STEP 3** 在MacroDroid中配置触发器。
 
 当触发器为「应用程序打开（所有应用程序）」时，触发动作，发送以下HTTP请求：
 
 ```bash
-curl --location --request POST 'https://wbmslcanemdjvzdqucxk.supabase.co/rest/v1/records' \
+curl --location --request POST '<VITE_SUPABASE_URL>/rest/v1/records' \
 --header 'apikey: <VITE_SUPABASE_ANON_KEY>' \
 --header 'Authorization: Bearer <VITE_SUPABASE_ANON_KEY>' \
 --header 'Prefer: return=minimal' \
 --header 'Content-Type: application/json' \
 --data-raw '{"battery": "{battery}", "source": "3", "app": "{fg_app_name}"}'
 ```
+
+其中尖括号内的内容需要您进行动态替换。`{battery}`和`{fg_app_name}`分别表示当前设备电量以及前台应用名称，可在MacroDroid中通过这样的大括号插值形式获取。
 
 <!-- #### **STEP 4** 在Netlify中部署本项目。
 
