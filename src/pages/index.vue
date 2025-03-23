@@ -58,7 +58,7 @@ onMounted(async () => {
     </div>
     <div flex gap-3 text-xl my-4 justify-center text-white font-bold>
       <span dark:text-white:30 text-gray:90>上次更新</span>
-      <span>{{ timeAgo || "Loading" }}</span>
+      <span text-black dark:text-white>{{ timeAgo || "Loading" }}</span>
     </div>
 
   </div>
