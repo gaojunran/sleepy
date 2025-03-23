@@ -13,6 +13,7 @@
     "postinstall": "npx simple-git-hooks"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
     "@vueuse/core": "^12.8.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^4.5.1",
     "@iconify-json/carbon": "^1.2.8",
+    "@iconify-json/material-symbols": "^1.2.17",
     "@types/node": "^22.13.9",
     "@unocss/eslint-config": "^66.1.0-beta.3",
     "@unocss/eslint-plugin": "^66.1.0-beta.3",
