@@ -7,19 +7,20 @@ const latestPhoneRecord = ref({} as MyRecord)
 const latestPcRecord = ref({} as MyRecord)
 
 async function fetchData() {
-  const latestPhoneResponse = await supabase
+  const fetchPhone = async () => await supabase
     .from('records')
     .select()
     .eq('source', 1) // from phone
     .order('updated_at', { ascending: false })
     .limit(1)
-  latestPhoneRecord.value = latestPhoneResponse?.data?.[0] ?? {}
-  const latestPcResponse = await supabase
+  const fetchPc = async () => await supabase
     .from('records')
     .select()
     .eq('source', 2) // from pc
     .order('updated_at', { ascending: false })
     .limit(1)
+  const [latestPhoneResponse, latestPcResponse] = await Promise.all([fetchPhone(), fetchPc()])
+  latestPhoneRecord.value = latestPhoneResponse?.data?.[0] ?? {}
   latestPcRecord.value = latestPcResponse?.data?.[0] ?? {}
 }
 
@@ -63,7 +64,7 @@ onMounted(async () => {
       </div>
       <i :class="[batteryIcon, batteryColor]" />
       <div :class="[batteryColor]" text-lg font-bold mr-4>
-        {{ latestPhoneRecord?.battery || "Loading" }}%
+        {{ latestPhoneRecord?.battery || "" }}%
       </div>
       <div font-bold>
         {{ latestPhoneRecord?.app || "Loading" }}
