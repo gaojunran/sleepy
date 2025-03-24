@@ -2,7 +2,7 @@
 
 睡着了嘛😴？在干嘛？
 
-Sleepy可以记录你的设备状态（手机电量，前台应用……），并实时展示在页面上。
+Sleepy可以记录我的设备状态（手机电量，前台应用……），并实时展示在页面上。
 
 本项目创意来自B站视频[改了个能让各位实时视奸我的网站](https://b23.tv/aHAUFFo)，使用Vue3 + Supabase重构实现。
 
@@ -77,10 +77,20 @@ curl --location --request POST '<VITE_SUPABASE_URL>/rest/v1/records' \
 
 你需要包含环境变量`VITE_SUPABASE_URL`和`VITE_SUPABASE_ANON_KEY`，并使用推荐的`uv`来运行单文件Python脚本。
 
+对于Windows，可以使用PowerShell：
+
+```powershell
+$env:VITE_SUPABASE_URL="https://your-supabase-url"
+$env:VITE_SUPABASE_ANON_KEY="your-supabase-anon-key"
+uv run ./win-monitor.py
+```
+
+对于MacOS，可以使用Bash：
+
 ```bash
-export VITE_SUPABASE_URL=<VITE_SUPABASE_URL>
-export VITE_SUPABASE_ANON_KEY=<VITE_SUPABASE_ANON_KEY>
-uv run ./pc-monitor.py
+export VITE_SUPABASE_URL="https://your-supabase-url"
+export VITE_SUPABASE_ANON_KEY="your-supabase-anon-key"
+uv run ./mac-monitor.py
 ```
 
 这将在你的设备上每分钟更新一次你的状态。如果你想定制其它触发逻辑，可以自行修改脚本。
