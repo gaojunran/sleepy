@@ -6,7 +6,7 @@ Sleepy可以记录你的设备状态（手机电量，前台应用……），�
 
 本项目创意来自B站视频[改了个能让各位实时视奸我的网站](https://b23.tv/aHAUFFo)，使用Vue3 + Supabase重构实现。
 
-![Screenshot](<./public/Screenshot.png>)
+![Screenshot](./public/Screenshot.png)
 
 ## 如何使用
 
@@ -56,7 +56,7 @@ VITE_SUPABASE_URL=
 VITE_SUPABASE_ANON_KEY=
 ```
 
-#### **STEP 3** 在MacroDroid中配置触发器。
+#### **STEP 3** 手机监控端：在MacroDroid中配置触发器。
 
 当触发器为「应用程序打开（所有应用程序）」时，触发动作，发送以下HTTP请求：
 
@@ -73,9 +73,17 @@ curl --location --request POST '<VITE_SUPABASE_URL>/rest/v1/records' \
 
 注意，您需要给MacroDroid提供**无障碍权限和「无限制」的省电配置**，否则可能无法获取最及时的消息。
 
-<!-- #### **STEP 4** 在Netlify中部署本项目。
+#### **STEP 4** 电脑监控端：运行Python脚本。
 
-TODO -->
+你需要包含环境变量`VITE_SUPABASE_URL`和`VITE_SUPABASE_ANON_KEY`，并使用推荐的`uv`来运行单文件Python脚本。
+
+```bash
+export VITE_SUPABASE_URL=<VITE_SUPABASE_URL>
+export VITE_SUPABASE_ANON_KEY=<VITE_SUPABASE_ANON_KEY>
+uv run ./pc-monitor.py
+```
+
+这将在你的设备上每分钟更新一次你的状态。如果你想定制其它触发逻辑，可以自行修改脚本。
 
 ## 其它
 
